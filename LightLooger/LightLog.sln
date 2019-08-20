@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightLooger", "LightLooger\LightLooger.csproj", "{B930358F-4A04-42B7-A81F-399AE8AD755F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightLog", "LightLooger\LightLog.csproj", "{B930358F-4A04-42B7-A81F-399AE8AD755F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{943E7A4F-7725-49E8-8A5E-0B5AE68798FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B930358F-4A04-42B7-A81F-399AE8AD755F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B930358F-4A04-42B7-A81F-399AE8AD755F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B930358F-4A04-42B7-A81F-399AE8AD755F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{943E7A4F-7725-49E8-8A5E-0B5AE68798FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{943E7A4F-7725-49E8-8A5E-0B5AE68798FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{943E7A4F-7725-49E8-8A5E-0B5AE68798FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{943E7A4F-7725-49E8-8A5E-0B5AE68798FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
