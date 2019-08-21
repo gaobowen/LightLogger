@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LightLoger\LightLog.csproj" />
+    <ProjectReference Include="..\LightLog\LightLog.csproj" />
   </ItemGroup>
 
 </Project>
