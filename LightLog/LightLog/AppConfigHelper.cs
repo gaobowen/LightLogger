@@ -13,26 +13,32 @@ namespace LightLog
         public AppConfigHelper()
         {
             //其中configuration为 xe 的根节点
-            XElement xe = XElement.Load(Utils.PathCombine(Directory.GetCurrentDirectory(), "applog.config"));
-            var els = xe?.Element("appSettings");
-            if (els == null)
+            try
             {
-                return;
-            }
-            var nextnode = els.FirstNode;
-            while (nextnode != null)
-            {
-                XElement xel = nextnode as XElement;
-                if (xel != null)
+                XElement xe = XElement.Load(Utils.PathCombine(Directory.GetCurrentDirectory(), "applog.config"));
+                var els = xe?.Element("appSettings");
+                if (els == null)
                 {
-                    string key = xel.FirstAttribute.Value;
-                    string val = xel.LastAttribute.Value;
-                    if (key != null && val != null)
-                    {
-                        _settingsDic.Add(key, val);
-                    }
+                    return;
                 }
-                nextnode = nextnode.NextNode;
+                var nextnode = els.FirstNode;
+                while (nextnode != null)
+                {
+                    XElement xel = nextnode as XElement;
+                    if (xel != null)
+                    {
+                        string key = xel.FirstAttribute.Value;
+                        string val = xel.LastAttribute.Value;
+                        if (key != null && val != null)
+                        {
+                            _settingsDic.Add(key, val);
+                        }
+                    }
+                    nextnode = nextnode.NextNode;
+                }
+            }
+            catch (Exception)
+            {
             }
         }
         private static Dictionary<string, string> _settingsDic = new Dictionary<string, string>();
