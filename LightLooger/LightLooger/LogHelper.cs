@@ -73,19 +73,19 @@ namespace LightLog
                 Directory.CreateDirectory(logsdir);
             }
 
-            var _infoDirPath = Utils.PathCombine(logsdir, "Info");
+            _infoDirPath = Utils.PathCombine(logsdir, "Info");
             if (!Directory.Exists(_infoDirPath))
             {
                 Directory.CreateDirectory(_infoDirPath);
             }
 
-            var _debugDirPath = Utils.PathCombine(logsdir, "Debug");
+            _debugDirPath = Utils.PathCombine(logsdir, "Debug");
             if (!Directory.Exists(_debugDirPath))
             {
                 Directory.CreateDirectory(_debugDirPath);
             }
 
-            var _errorDirPath = Utils.PathCombine(logsdir, "Error");
+            _errorDirPath = Utils.PathCombine(logsdir, "Error");
             if (!Directory.Exists(_errorDirPath))
             {
                 Directory.CreateDirectory(_errorDirPath);

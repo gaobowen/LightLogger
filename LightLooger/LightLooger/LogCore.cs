@@ -82,7 +82,6 @@ namespace LightLog
                         }
                         catch (Exception)
                         { }
-                        //Path.ChangeExtension(rename.FullName, ".log" + (i + 1));
                     }
                 }
             }
