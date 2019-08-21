@@ -8,10 +8,4 @@
     <None Remove="applog.config" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="applog.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>
