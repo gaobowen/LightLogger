@@ -15,10 +15,11 @@ namespace LightLog
 
         private static LogHelper Instance { set; get; }
         private LogLevel LogLv { get; set; } = LogLevel.Info;
-        static LogHelper()
-        { }
-        public LogHelper()
-        { }
+
+        private LogHelper()
+        {
+            BuildFileSegment();
+        }
 
         //暂时不启用，先采用简易模式
         //private ConcurrentQueue<LogTask> _logQueue = new ConcurrentQueue<LogTask>();
@@ -93,6 +94,29 @@ namespace LightLog
 
             return GetInstance();
         }
+
+        private void BuildFileSegment()
+        {
+            string segLengthStr = AppConfigHelper.Instance.GetSettingsKeyValue("SegLength");
+            string segCountStr = AppConfigHelper.Instance.GetSettingsKeyValue("SegCount");
+            long segLength = LogCore.SegLength;
+            if(long.TryParse(segLengthStr, out segLength))
+            {
+                if (segLength > 0)
+                {
+                    LogCore.SegLength = segLength;
+                }
+            }
+            int segCount = LogCore.SegTailNO + 1;
+            if (int.TryParse(segCountStr, out segCount))
+            {
+                if (segCount > 0)
+                {
+                    LogCore.SegTailNO = segCount - 1;
+                }
+            }
+        }
+
 
 
         public string GetErrorDirPath()

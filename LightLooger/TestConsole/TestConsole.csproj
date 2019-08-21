@@ -6,6 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="applog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="applog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LightLooger\LightLog.csproj" />
   </ItemGroup>
 

@@ -10,6 +10,9 @@ namespace LightLog
 {
     public class LogCore
     {
+        public static long SegLength { get; set; } = 1048576;
+        public static int SegTailNO { get; set; } = 4;
+
         //读写锁，当资源处于写入模式时，其他线程写入需要等待本次写入结束之后才能继续写入
         static ReaderWriterLockSlim InfoLogWriteLock = new ReaderWriterLockSlim();
         static ReaderWriterLockSlim DebugLogWriteLock = new ReaderWriterLockSlim();
@@ -54,14 +57,14 @@ namespace LightLog
             var dir = new DirectoryInfo(baseDirPath);
             var files = dir.GetFiles().ToList();
             var needCheck = files.FirstOrDefault(x => x.Name.Contains(".log0"));
-            if (needCheck != null && needCheck.Length > 512000)
+            if (needCheck != null && needCheck.Length > SegLength)
             {
                 //对日志文件重新分片
-                for (int i = 4; i >= 0; i--)
+                for (int i = SegTailNO; i >= 0; i--)
                 {
-                    if (i == 4)
+                    if (i == SegTailNO)
                     {
-                        var find = files.FirstOrDefault(x => x.Extension.Contains("log4"));
+                        var find = files.FirstOrDefault(x => x.Extension.Contains($"log{SegTailNO}"));
                         if (find == null) continue;
                         try
                         {
@@ -111,7 +114,7 @@ namespace LightLog
                 sw = new StreamWriter(fs, Encoding.UTF8);//, Encoding.GetEncoding("gb2312")
                 sw.WriteLine(strLog);
             }
-            catch (Exception ex)
+            catch (Exception)
             { }
             finally
             {
